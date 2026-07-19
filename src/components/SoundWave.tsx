@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import Animated, {
   Easing,
   useAnimatedStyle,
+  useReducedMotion,
   useSharedValue,
   withRepeat,
   withSequence,
@@ -17,8 +18,14 @@ const MIN_HEIGHT = 6;
 /** Uma barra da onda, oscilando com duração própria para parecer orgânica. */
 function Bar({ index, active, color }: { index: number; active: boolean; color: string }) {
   const h = useSharedValue(MIN_HEIGHT);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (active && reducedMotion) {
+      // Sem oscilação: barras estáticas em meia altura sinalizam a escuta
+      h.value = withTiming(MAX_HEIGHT / 2, { duration: 200 });
+      return;
+    }
     if (active) {
       // Durações dessincronizadas por barra criam o efeito de voz real
       const duration = 260 + ((index * 97) % 180);
@@ -34,7 +41,7 @@ function Bar({ index, active, color }: { index: number; active: boolean; color: 
     } else {
       h.value = withTiming(MIN_HEIGHT, { duration: 250 });
     }
-  }, [active, index, h]);
+  }, [active, index, reducedMotion, h]);
 
   const style = useAnimatedStyle(() => ({ height: h.value }));
 

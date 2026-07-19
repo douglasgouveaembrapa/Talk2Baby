@@ -7,6 +7,7 @@ import Animated, {
   Easing,
   interpolateColor,
   useAnimatedStyle,
+  useReducedMotion,
   useSharedValue,
   withRepeat,
   withSequence,
@@ -35,6 +36,8 @@ interface Props {
  */
 export function MicButton({ recording, processing, onPress }: Props) {
   const { colors } = useTheme();
+  // Checklist da skill UI/UX Pro Max: respeitar prefers-reduced-motion
+  const reducedMotion = useReducedMotion();
 
   const breath = useSharedValue(0); // respiração em idle
   const pulse = useSharedValue(0); // anéis em recording
@@ -42,7 +45,13 @@ export function MicButton({ recording, processing, onPress }: Props) {
   const mode = useSharedValue(0); // 0 = idle, 1 = recording
 
   useEffect(() => {
-    mode.value = withTiming(recording ? 1 : 0, { duration: 400 });
+    mode.value = withTiming(recording ? 1 : 0, { duration: 300 });
+    if (reducedMotion) {
+      // Sem loops de animação: estado indicado por cor/ícone apenas
+      breath.value = withTiming(recording ? 0 : 0.5, { duration: 200 });
+      pulse.value = 0;
+      return;
+    }
     if (recording) {
       breath.value = withTiming(0, { duration: 200 });
       pulse.value = 0;
@@ -60,7 +69,7 @@ export function MicButton({ recording, processing, onPress }: Props) {
         -1,
       );
     }
-  }, [recording, breath, pulse, mode]);
+  }, [recording, reducedMotion, breath, pulse, mode]);
 
   const buttonStyle = useAnimatedStyle(() => ({
     transform: [

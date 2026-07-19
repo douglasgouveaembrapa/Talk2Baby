@@ -27,13 +27,22 @@ export interface BabyEvent extends ExtractedEvent {
   created_at: string;
 }
 
+import type { ComponentProps } from 'react';
+import type { MaterialCommunityIcons } from '@expo/vector-icons';
+
+type IconName = ComponentProps<typeof MaterialCommunityIcons>['name'];
+
+/**
+ * Ícones vetoriais por categoria (checklist da skill UI/UX Pro Max:
+ * nunca usar emoji como ícone).
+ */
 export const CATEGORY_META: Record<
   EventCategory,
-  { label: string; emoji: string }
+  { label: string; icon: IconName }
 > = {
-  mamada: { label: 'Mamada', emoji: '🍼' },
-  fralda: { label: 'Fralda', emoji: '🧷' },
-  sono: { label: 'Sono', emoji: '🌙' },
-  remedio: { label: 'Remédio', emoji: '💊' },
-  outro: { label: 'Outros', emoji: '📝' },
+  mamada: { label: 'Mamada', icon: 'baby-bottle-outline' },
+  fralda: { label: 'Fralda', icon: 'human-baby-changing-table' },
+  sono: { label: 'Sono', icon: 'sleep' },
+  remedio: { label: 'Remédio', icon: 'pill' },
+  outro: { label: 'Outros', icon: 'note-text-outline' },
 };

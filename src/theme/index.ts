@@ -16,4 +16,4 @@ export function useTheme(): Theme {
 }
 
 export { dark, light } from './colors';
-export { type } from './typography';
+export { fonts, type } from './typography';

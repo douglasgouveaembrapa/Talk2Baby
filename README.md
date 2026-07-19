@@ -46,6 +46,8 @@ Talk2Baby/
 
 ## Setup
 
+Guia detalhado (Supabase + chaves de IA + produção): **[SETUP.md](SETUP.md)**
+
 ```bash
 npm install
 cp .env.example .env          # preencha Supabase + OpenAI/Anthropic
@@ -55,7 +57,10 @@ npx expo start                # abra no Expo Go (Android)
 
 ## Decisões de design
 
-- **Dark mode de baixa luminância**: fundo `#0F0E13`, texto sem branco puro, acentos dessaturados — pensado para uso às 3h sem acordar o bebê. Segue o modo do sistema automaticamente.
+Design system gerado com a skill [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill), perfil **"Parenting & Baby Tracker"** (soft pink `#EC4899` + trust blue `#0284C7`) e pairing tipográfico **"Wellness Calm"** (Lora + Raleway).
+
+- **Dark mode de baixa luminância**: derivado da paleta da skill com acentos dessaturados e fundo `#131016` — pensado para uso às 3h sem acordar o bebê. Segue o modo do sistema automaticamente.
+- **Checklist da skill aplicado**: ícones vetoriais (MaterialCommunityIcons) no lugar de emojis, `prefers-reduced-motion` respeitado em todas as animações, contraste mínimo 4.5:1, transições de 150–300ms, anti-patterns evitados (neon brilhante, excesso de movimento).
 - **Zero fricção**: a Home tem um único alvo de toque gigante (148px). Histórico e relatório ficam em links discretos no rodapé.
 - **Feedback em camadas**: háptica ao tocar, anéis pulsantes + ondas durante a escuta, card de confirmação com spring ao salvar.
 - **Transcrição preservada** (`raw_text`): se a IA errar, o usuário edita no histórico vendo o que foi dito originalmente.

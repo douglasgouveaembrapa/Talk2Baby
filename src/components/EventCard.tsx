@@ -1,3 +1,4 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, { FadeInDown, FadeOutDown } from 'react-native-reanimated';
@@ -39,7 +40,11 @@ export function EventCard({ event, rawText }: Props) {
           { backgroundColor: colors.category[event.category] + '26' },
         ]}
       >
-        <Text style={styles.emoji}>{meta.emoji}</Text>
+        <MaterialCommunityIcons
+          name={meta.icon}
+          size={26}
+          color={colors.category[event.category]}
+        />
       </View>
       <View style={styles.info}>
         <Text style={[type.label, { color: colors.text }]}>{meta.label}</Text>
@@ -74,7 +79,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  emoji: { fontSize: 24 },
   info: { flex: 1, gap: 2 },
   quote: { fontStyle: 'italic', marginTop: 2 },
 });

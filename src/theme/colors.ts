@@ -1,9 +1,10 @@
 /**
  * Design system — Talk2Baby
  *
- * Paleta pensada para pais com sono: tons quentes e dessaturados no claro,
- * e um dark mode de luminância realmente baixa (uso às 3h da manhã sem
- * acordar o bebê — nada de branco puro nem azuis frios estourados).
+ * Paleta baseada no perfil "Parenting & Baby Tracker" da skill UI/UX Pro Max
+ * (soft pink + trust blue), com dark mode derivado em luminância baixa para
+ * uso às 3h da manhã sem acordar o bebê — seguindo os anti-patterns da skill:
+ * nada de neon brilhante, nada de excesso de movimento.
  */
 
 export interface Palette {
@@ -17,15 +18,17 @@ export interface Palette {
   text: string;
   /** Texto secundário / hints */
   textMuted: string;
-  /** Cor de marca — lilás acolhedor */
+  /** Cor de marca — rosa acolhedor (skill: #EC4899) */
   primary: string;
   /** Variante suave do primary para fundos/glow */
   primarySoft: string;
+  /** Azul confiança — ações secundárias (skill: #0284C7) */
+  accent: string;
   /** Gradiente do botão de voz */
   micGradient: [string, string];
   /** Glow pulsante ao redor do botão */
   micGlow: string;
-  /** Vermelho suave do estado gravando */
+  /** Coral suave do estado gravando */
   recording: string;
   /** Verde suave de confirmação */
   success: string;
@@ -44,47 +47,49 @@ export interface Palette {
 }
 
 export const light: Palette = {
-  background: '#FAF7F4',
+  background: '#FDF2F8',
   surface: '#FFFFFF',
-  surfaceHigh: '#F3EEF9',
-  text: '#2B2733',
-  textMuted: '#8A8494',
-  primary: '#8B7BD8',
-  primarySoft: '#EDE8FA',
-  micGradient: ['#A392E8', '#7C6BD0'],
-  micGlow: '#8B7BD8',
-  recording: '#E8837B',
-  success: '#7BBFA0',
-  danger: '#D9A05B',
-  border: '#ECE7E2',
+  surfaceHigh: '#FDF4F8',
+  text: '#0F172A',
+  textMuted: '#64748B',
+  primary: '#EC4899',
+  primarySoft: '#FCE9F2',
+  accent: '#0284C7',
+  micGradient: ['#F472B6', '#DB2777'],
+  micGlow: '#EC4899',
+  recording: '#E05A4E',
+  success: '#059669',
+  danger: '#D97706',
+  border: '#FCE9F2',
   category: {
-    mamada: '#E8A0B4',
-    fralda: '#E9C46A',
-    sono: '#8B7BD8',
-    remedio: '#7BBFA0',
-    outro: '#9AA5B1',
+    mamada: '#EC4899',
+    fralda: '#D97706',
+    sono: '#0284C7',
+    remedio: '#059669',
+    outro: '#64748B',
   },
 };
 
 export const dark: Palette = {
-  background: '#0F0E13',
-  surface: '#17151E',
-  surfaceHigh: '#1F1C2A',
-  text: '#E6E1EC',
-  textMuted: '#7D7789',
-  primary: '#9D8CE0',
-  primarySoft: '#241F33',
-  micGradient: ['#6E5DBE', '#4D3F96'],
-  micGlow: '#7C6BD0',
-  recording: '#C96A62',
-  success: '#5E9C80',
-  danger: '#B98847',
-  border: '#26232F',
+  background: '#131016',
+  surface: '#1C1720',
+  surfaceHigh: '#251E2B',
+  text: '#EAE3EA',
+  textMuted: '#8A8093',
+  primary: '#C9679C',
+  primarySoft: '#2C2030',
+  accent: '#5E97BE',
+  micGradient: ['#9C4E77', '#712F55'],
+  micGlow: '#B05C8C',
+  recording: '#B85A50',
+  success: '#4E8A70',
+  danger: '#A97B3F',
+  border: '#2A2430',
   category: {
-    mamada: '#C4798E',
-    fralda: '#C0993F',
-    sono: '#9D8CE0',
-    remedio: '#5E9C80',
-    outro: '#6E7885',
+    mamada: '#C9679C',
+    fralda: '#A97B3F',
+    sono: '#5E97BE',
+    remedio: '#4E8A70',
+    outro: '#7A8290',
   },
 };
