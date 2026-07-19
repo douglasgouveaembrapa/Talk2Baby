@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Talk2Baby",
+    "slug": "talk2baby",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "talk2baby",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#0F0E13"
+    },
+    "android": {
+      "package": "com.talk2baby.app",
+      "permissions": ["android.permission.RECORD_AUDIO"],
+      "adaptiveIcon": {
+        "backgroundColor": "#0F0E13"
+      }
+    },
+    "ios": {
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "O Talk2Baby usa o microfone para registrar a rotina do bebê por voz."
+      }
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": "O Talk2Baby usa o microfone para registrar a rotina do bebê por voz."
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

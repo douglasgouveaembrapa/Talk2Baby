@@ -1,0 +1,20 @@
+node_modules/
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Env — nunca commitar chaves
+.env
+.env.local
+
+# macOS
+.DS_Store
