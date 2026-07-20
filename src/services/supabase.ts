@@ -3,8 +3,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createClient } from '@supabase/supabase-js';
 import { BabyEvent, ExtractedEvent } from '@/types/events';
 
-const url = process.env.EXPO_PUBLIC_SUPABASE_URL ?? '';
-const anonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ?? '';
+// Credenciais do projeto (app de uso pessoal — a anon key é pública por
+// design e o acesso real é controlado pela RLS no Supabase).
+// Um .env com EXPO_PUBLIC_SUPABASE_* sobrescreve estes padrões.
+const DEFAULT_URL = 'https://dlnmjjoqygrvtnceljzz.supabase.co';
+const DEFAULT_ANON_KEY =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRsbm1qam9xeWdydnRuY2Vsanp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ0OTYzNzQsImV4cCI6MjEwMDA3MjM3NH0.MPMzTZgSUwOD7hPWp9vA4UkvE4Da7Puk3atzC1giNH8';
+
+const url = process.env.EXPO_PUBLIC_SUPABASE_URL ?? DEFAULT_URL;
+const anonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ?? DEFAULT_ANON_KEY;
 
 export const supabase = createClient(url, anonKey, {
   auth: {
